@@ -1,6 +1,7 @@
+# coding=utf-8
 """
 Hakee kaikki tuotteet tietokannasta:
-    http-GET -> funktio -> json
+http-GET -> funktio -> json
 
 entrypoint: get_all_items
 runtime: python39
@@ -11,33 +12,35 @@ import psycopg2
 import logging
 import requests
 import json
+import os
+
+
+# Haetaan login-tiedot ympäristömuuttujista <- Secret Manager
+db_name = os.environ.get('database_name', 'Specified environment variable is not set.')
+db_user_name = os.environ.get('database_user', 'Specified environment variable is not set.')
+db_passwd = os.environ.get('database_pw', 'Specified environment variable is not set.')
+db_host = os.environ.get('database_host', 'Specified environment variable is not set.')
 
 
 def get_all_items(request):
-   
+    
     con = None
 
-    # TODO: käsittele "request" ja palauta joko 200 onnistuneesta vastauksesta http-pyyntöön
-    #       tai virhekoodi (varmaan 500 tjsp ?)
-
-    # TODO: Secret Manager -koodi -> vois tehdä oman funktion?
-
     try:
-        con = psycopg2.connect(database="<HAE SECRETISTÄ>", user = "<HAE SECRETISTÄ>", password = "<HAE SECRETISTÄ>", host = "<HAE SECRETISTÄ>")
+        con = psycopg2.connect(database = db_name, user = db_user_name, password = db_passwd, host = db_host)
         cursor = con.cursor()
 
-        SQL = 'SELECT * FROM <TAULUN NIMI TÄHÄN>;'
+        SQL = 'select tuote.id, tuote.product_name, tuote.product_description, varasto.product_amount, tuote.product_price from tuote, varasto where tuote.id = varasto.product_id;'
         cursor.execute(SQL)
         
         results = cursor.fetchall()
-        
-        # TODO: käsittele results, paitsi jos tulee valmiiksi json-muodossa -> return
-        for line in results:
-            pass
-        
         cursor.close()
         
-        return all_items_json
+        results_json = json.dumps(results)
+        print(results_json.encode('UTF-8'))
+
+        return results_json.encode('UTF-8')
+        
 
     # TODO: poikkeusten käsittely + loggaushommat
     except (Exception, psycopg2.DatabaseError) as error:
@@ -46,7 +49,3 @@ def get_all_items(request):
     finally:
         if con is not None:
             con.close()
-
-
-def get_secrets():
-    pass
