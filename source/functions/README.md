@@ -4,5 +4,6 @@ Jokainen funktio omassa kansiossaan, jossa Terraformia varten
 - main.py
 - requirements.txt
 
-## Funtiot
-- get_all_items: hakee kaikki tuotteet tietokannasta
+## Funtkiot
+- `get_all_items` hakee kaikki tuotteet tietokannasta
+- `get_cart` hakee tietyn ostoskorin tuotteet
