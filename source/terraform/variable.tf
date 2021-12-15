@@ -13,9 +13,12 @@ variable "location" {
   type        = string
 }
 
-variable "gcr_region" {
-  description = "Name of the GCP region where the GCR registry is located. e.g: 'us' or 'eu'."
-  type        = string
+variable "region" {
+  default = "us-central1"
+}
+
+variable "zone" {
+  default = "us-central1-c"
 }
 
 variable "credentials file" {
@@ -86,4 +89,4 @@ variable "db_password" {
   description = "The password of the Cloud SQL database user."
   type        = string
   default     = "testpassword" 
-}
+
