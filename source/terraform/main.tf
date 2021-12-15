@@ -13,13 +13,11 @@ terraform {
 }
 
 provider "google" {
-  credentials = file(var.credentials_file)
   project     = var.project
   region      = var.zone
 }
 
 provider "google-beta" {
-  credentials = file(var.credentials_file)
   project     = var.project
   region      = var.zone
 }
@@ -29,64 +27,41 @@ resource "google_sourcerepo_repository" "repo" {
   name = var.repository_name
 }
 
-# API rakennus
-resource "google_api_gateway_api" "hannibal-api" {
-  provider     = google-beta
-  api_id       = "hannibal-gateway"
-  display_name = "hannibal-api"
+# Access control bucketille
+resource "google_storage_bucket_access_control" "public_rule" {
+  bucket = google_storage_bucket.bucket.name
+  role   = "OWNER"
+  entity = "allUsers"
 }
-
-# API config
-resource "google_api_gateway_api_config" "hannibal-api" {
-  provider      = google-beta
-  api           = google_api_gateway_api.hannibal-api.api_id
-  api_config_id = "hannibal-api-config"
-
-  openapi_documents {
-    document {
-      path     = "spec.yaml"
-      contents = filebase64("../api-gateway/api-config.yaml")
-    }
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-# API Gateway
-resource "google_api_gateway_gateway" "hannibal-api" {
-  provider   = google-beta
-  api_config = google_api_gateway_api_config.hannibal-api.id
-  gateway_id = "hannibal-gateway"
-}
-
 
 # Ämpäri jossa koodit funktioille????
 resource "google_storage_bucket" "bucket" {
   provider = google
-  name     = "juukeli-bucket"
+  name     = "juukeli-bucket-nro-666"
 }
 
 # Laitetaan koodit ämpäriin????
-resource "google_storage_bucket_object" "functions" {
+resource "google_storage_bucket_object" "archive" {
   provider = google
-  name     = "functions"
+  name     = "hannibal-funktio.zip"
   bucket   = google_storage_bucket.bucket.name
-  source   = "./functions.zip"
+  source   = "../functions/hannibal-funktio.zip"
 }
 
 # luo funktio zipistä joka on bucketissa?????
 resource "google_cloudfunctions_function" "function" {
   provider    = google
-  name        = "function-test"
-  description = "My function"
+  name        = "hannibal-funktio"
+  description = "testi"
   runtime     = "python38"
+  project     =  var.project
+  region      =  var.region
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
-  #source_archive_object = google_storage_bucket_object.archive.name
+  source_archive_object = google_storage_bucket_object.archive.name
   trigger_http          = true
-  entry_point           = "helloGET"
+  entry_point           = "hello_world"
 }
 
 # IAM entry for all users to invoke the function
@@ -99,4 +74,34 @@ resource "google_cloudfunctions_function_iam_member" "invoker" {
 
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
+}
+
+# API rakennus
+resource "google_api_gateway_api" "hannibal-api" {
+  provider     = google-beta
+  api_id       = "hannibal-api"
+}
+
+# API config
+resource "google_api_gateway_api_config" "hannibal-cnf" {
+  provider      = google-beta
+  api           = google_api_gateway_api.hannibal-api.api_id
+  api_config_id = "config"
+
+  openapi_documents {
+    document {
+      path     = "spec.yaml"
+      contents = filebase64("./api-config.yaml")
+    }
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# API Gateway
+resource "google_api_gateway_gateway" "hannibal-gtw" {
+  provider   = google-beta
+  api_config = google_api_gateway_api_config.hannibal-cnf.api_config_id
+  gateway_id = "gateway"
 }
