@@ -21,7 +21,7 @@ db_passwd = os.environ.get('database_pw', 'Specified environment variable is not
 db_host = os.environ.get('database_host', 'Specified environment variable is not set.')
 
 
-def get_cart(request):
+def insert_to_cart(request):
 
     request_json = request.get_json()
 
@@ -32,7 +32,8 @@ def get_cart(request):
         product_id = request_json['product_id']
         buy_amount = request_json['amount']
 
-    # TODO: lisää virheidenkäsittely tähän!
+    else:
+        return "Not a valid request!"
     
     con = None
 
@@ -46,7 +47,7 @@ def get_cart(request):
         SQL = f"select product_price from tuote where id = {product_id};"
         cursor_get_price.execute(SQL)
         
-        price = cursor_get_price.fetchall()
+        price = cursor_get_price.fetchone()
         cursor_get_price.close()
         
         
@@ -58,12 +59,11 @@ def get_cart(request):
         values = (cart, buy_amount, price, product_id)
 
         cursor_insert_db.execute(SQL, values)
-
         con.commit()
+        
         cursor_get_price.close()
         
-        # TODO: pitäiskö palauttaa myös esim. "200"?
-        return print("Tuote lisätty ostoskoriin")
+        return "Tuote lisätty ostoskoriin"
         
 
     # TODO: poikkeusten käsittely + loggaushommat
