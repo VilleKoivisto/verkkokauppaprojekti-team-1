@@ -1,8 +1,8 @@
 
 swagger: '2.0'
 info:
-  title: Hannibal
-  description: Hannibaliapi-Sisäelinkaupalle
+  title: hannibal
+  description: hannibaliapi-sisäelinkaupalle
   version: 1.0.0
 schemes:
   - https
@@ -14,7 +14,7 @@ paths:
       summary: hakee tuotteen
       operationId: getproduct
       x-google-backend:
-        address: https://us-central1-projekti4-testaus.cloudfunctions.net/hannibal-funktio #MUISTA VAIHTAA PROJEKTIN + FUNKTION NIMI
+        address: https://us-central1-testiproj.cloudfunctions.net/hannibal-funktio
       responses:
         '200':
           description: 

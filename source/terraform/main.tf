@@ -14,12 +14,14 @@ terraform {
 
 provider "google" {
   project     = var.project
-  region      = var.zone
+  region      = var.region
+  zone        = var.zone
 }
 
 provider "google-beta" {
   project     = var.project
-  region      = var.zone
+  region      = var.region
+  zone        = var.zone
 }
 
 # Google Cloud Source Repository
@@ -37,7 +39,7 @@ resource "google_storage_bucket_access_control" "public_rule" {
 # Ämpäri jossa koodit funktioille????
 resource "google_storage_bucket" "bucket" {
   provider = google
-  name     = "juukeli-bucket-nro-666"
+  name     = "juukeli-bucket-nro-66666"
 }
 
 # Laitetaan koodit ämpäriin????
@@ -45,7 +47,7 @@ resource "google_storage_bucket_object" "archive" {
   provider = google
   name     = "hannibal-funktio.zip"
   bucket   = google_storage_bucket.bucket.name
-  source   = "../functions/hannibal-funktio.zip"
+  source   = "./hannibal-funktio.zip"
 }
 
 # luo funktio zipistä joka on bucketissa?????
@@ -54,8 +56,6 @@ resource "google_cloudfunctions_function" "function" {
   name        = "hannibal-funktio"
   description = "testi"
   runtime     = "python38"
-  project     =  var.project
-  region      =  var.region
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
