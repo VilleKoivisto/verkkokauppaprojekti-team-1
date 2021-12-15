@@ -40,6 +40,7 @@ resource "google_storage_bucket_access_control" "public_rule" {
 resource "google_storage_bucket" "bucket" {
   provider = google
   name     = "juukeli-bucket-nro-66666"
+  location = "EU"
 }
 
 # Laitetaan koodit ämpäriin????
