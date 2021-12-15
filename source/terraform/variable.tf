@@ -14,3 +14,7 @@ variable "repository_name" {
   type        = string
   default     = "sample-docker-app"
 }
+
+#variable "credentials_file" {
+#  default = "./.json"
+#}

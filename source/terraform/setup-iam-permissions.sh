@@ -20,8 +20,13 @@ gcloud services enable containerregistry.googleapis.com --project=$GOOGLE_CLOUD_
 echo "Enabling the Cloud Run API for project $GOOGLE_CLOUD_PROJECT..."
 gcloud services enable run.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
 
+echo "Enabling the API Gateway for project $GOOGLE_CLOUD_PROJECT..."
 gcloud services enable apigateway.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
+
+echo "Enabling the Service Management API for project $GOOGLE_CLOUD_PROJECT..."
 gcloud services enable servicemanagement.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
+
+echo "Enabling the Service Control for project $GOOGLE_CLOUD_PROJECT..."
 gcloud services enable servicecontrol.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
 
 # Uncomment if you are deploying a Cloud SQL database
