@@ -1,0 +1,54 @@
+# openapi2-functions.yaml
+swagger: '2.0'
+info:
+  title: Elinkauppa API
+  description: Paikallisesti tuotettua luomulihaa! Taatusti tuoretta!
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /haekaikki: 
+    get:
+      summary: Hakee kaikki tuotteet
+      operationId: hae-kaikki
+      x-google-backend:
+        address: https://us-central1-week-10-fall-1.cloudfunctions.net/hae-kaikki-elimet 
+      responses:
+        '200':
+          description: Hakee verkkokaupan kaikki tuotteet
+          schema:
+            type: string
+  /hae: 
+    get:
+      summary: Hakee yksittäisen tuotteen
+      operationId: hae
+      x-google-backend:
+        address: https://us-central1-week-10-fall-1.cloudfunctions.net/hae
+      responses:
+        '200':
+          description: Hakee yksittäisen tuotteen verkkokaupasta
+          schema:
+            type: string
+  /ostoskori: 
+    post:
+      summary: Lisää valitun tuotteen koriin
+      operationId: lisaa-koriin
+      x-google-backend:
+        address: https://us-central1-week-10-fall-1.cloudfunctions.net/lisaa-koriin
+      responses:
+        '200':
+          description: Lisää tuotteen koriin
+          schema:
+            type: string
+    get:
+      summary: Hakee ostoskorin sisällön
+      operationId: ostoskori
+      x-google-backend:
+        address: https://us-central1-week-10-fall-1.cloudfunctions.net/ostoskori
+      responses:
+        '200':
+          description: Palauttaa ostoskorin sisällön
+          schema:
+            type: string
