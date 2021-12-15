@@ -28,6 +28,8 @@ def get_cart(request):
 
     if request.args and 'cart_id' in request.args:
         cart = int(request.args.get('cart_id'))
+    else:
+        cart = 0
     
     con = None
 
@@ -36,7 +38,7 @@ def get_cart(request):
         cursor = con.cursor()
 
         SQL = 'SELECT tuote.product_name AS product_name, tuote.product_price AS unit_price, ostoskori.product_amount AS amount, ostoskori.product_price AS total_price FROM ostoskori INNER JOIN tuote ON ostoskori.product_id = tuote.id WHERE bucket_id = %s; '
-        record_to_insert = (cart)
+        record_to_insert=(cart,)
         cursor.execute(SQL, record_to_insert)
 
         results = cursor.fetchall()
