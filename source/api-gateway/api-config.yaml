@@ -21,7 +21,7 @@ paths:
           schema:
             type: string
   /hae: 
-    get:
+    post:
       summary: Hakee yksittäisen tuotteen
       operationId: hae
       x-google-backend:
