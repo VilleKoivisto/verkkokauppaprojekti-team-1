@@ -24,6 +24,16 @@ steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - get-all-items
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
       - beta
       - functions
       - deploy
@@ -43,6 +53,16 @@ steps:
       - database_name
       - database_pw
       - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - get-one-item
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - gcloud
@@ -68,10 +88,20 @@ steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - get-cart
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
       - beta
       - functions
       - deploy
-      - push_to_cart
+      - push-to-cart
       - '--region=us-central1'
       - '--allow-unauthenticated'
       - '--entry-point=insert_to_cart'
@@ -87,6 +117,16 @@ steps:
       - database_name
       - database_pw
       - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - push-to-cart
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
 availableSecrets:
   secretManager:
     - versionName: projects/344690940931/secrets/database_host/versions/1
