@@ -36,7 +36,7 @@ paths:
       summary: Lisää valitun tuotteen koriin
       operationId: lisaa-koriin
       x-google-backend:
-        address: https://us-central1-week-10-fall-1.cloudfunctions.net/lisaa-tuote-ostoskoriin
+        address: https://us-central1-week-10-fall-1.cloudfunctions.net/lisaa-tuote
       responses:
         '200':
           description: Lisää tuotteen koriin

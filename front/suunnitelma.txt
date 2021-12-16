@@ -1,0 +1,50 @@
+
+Mitäs kaikkee sisältöööö?
+
+ETUSIVU:
+index.html
+
+joku "THIS JUST IN" ? 
+
+lista kaikista tuotteista
+käytetäänkö kategorioita? 
+ -- tosin, millasia kategorioita, kaikki on elimiä :D
+ vai -- sisäelin, ruumiinosa? as in, sormet
+ joo xD
+ miten ois "vain maksullisille jäsenille: lasten sisäelimet tms?"
+joo
+joooo
+
+-- laitoin mun git branchiin noi templatet, jos niitä halutaan käyttää
+niinku latasitko ne vai onks niihi joku linnkki tai jtn
+nnnne on kansioissa, toki lopputulemana ne vois olla jossain muussa kansiossa kuin "html-samples"
+
+noniinno, kai sä näät ne tos? ku shareliveview
+aa joo nään
+
+en vaa tiä kui helposti noitten koodaus menee VScodella :D mut kai tähänki jotai laajennuksia siihen
+
+
+näyttää kyl vaikeelt 
+jos käytetään tota sample-2, siinä ei oo bootstrapia, nii vähä iisimpi
+nyt on "html" kansiossa
+vois sinne mallailla kans jotai kommentteja
+joo ja sit aletuotteet niinku alkoholistin maksat sun muut
+premium tuotteet niinku huippu urheilijan sydän <-- joo just tää :D 
+
+TUOTESIVU:
+product-info.html
+sql-taulu: "tuote"
+
+Nimi (product_name):
+Kuvaus (product_description):
+Hintab (product_price):
+
+
+"Muut käyttäjät ostivat tämän kanssa - [Fava beans] [Chianti]" ?
+
+"Muut käyttäjät ostivat tämän kanssa - barbecue mauste"
+
+OSTOSKORI:
+-shopping-cart.html
+sql-taulu: "ostoskori"
