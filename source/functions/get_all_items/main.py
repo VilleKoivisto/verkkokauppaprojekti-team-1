@@ -1,5 +1,5 @@
 # coding=utf-8
-# juukeli!
+# juukeli, toimiiko triggeri?
 """
 Hakee kaikki tuotteet tietokannasta:
 http-GET -> funktio -> json
