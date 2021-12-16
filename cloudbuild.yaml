@@ -1,0 +1,24 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - testi-funktio
+  - --region=us-central1
+  - --allow-unauthenticated
+  - --entry-point=get_all_items
+  - --memory=256MB
+  - --source=./source/functions/get_all_items
+  - --trigger-http
+  - --runtime=python39
+availableSecrets:
+  secretManager:
+  - versionName: projects/week-10-fall-1/secrets/database_host/latest
+    env: 'database_host'
+  - versionName: projects/week-10-fall-1/secrets/database_name/latest
+    env: 'database_name'
+  - versionName: projects/week-10-fall-1/secrets/database_pw/latest
+    env: 'database_pw'
+  - versionName: projects/week-10-fall-1/secrets/database_user/latest
+    env: 'database_user'
