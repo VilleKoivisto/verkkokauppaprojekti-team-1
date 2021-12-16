@@ -1,4 +1,5 @@
 # coding=utf-8
+# juukeli!
 """
 Hakee kaikki tuotteet tietokannasta:
 http-GET -> funktio -> json
