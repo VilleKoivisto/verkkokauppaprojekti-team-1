@@ -3,14 +3,11 @@
 # These variables are expected to be passed in by the operator.
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "project" {
-  description = "The project ID where all resources will be launched."
-  type        = string
-}
-
 variable "location" {
   description = "The location (region or zone) to deploy the Cloud Run services. Note: Be sure to pick a region that supports Cloud Run."
   type        = string
+variable "project" {
+  default = "week-10-fall-1"
 }
 
 variable "region" {
@@ -91,3 +88,12 @@ variable "db_password" {
   default     = "testpassword" 
 }
 
+variable "repository_name" {
+  description = "Name of the Google Cloud Source Repository to create."
+  type        = string
+  default     = "hannibal-repo"
+}
+
+#variable "credentials_file" {
+#  default = "./.json"
+#}
