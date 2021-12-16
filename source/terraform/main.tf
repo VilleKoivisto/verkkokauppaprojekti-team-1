@@ -42,20 +42,20 @@ resource "google_storage_bucket_access_control" "public_rule" {
 # Ämpäri jossa koodit funktioille
 resource "google_storage_bucket" "bucket" {
   provider = google
-  name     = "sisaelin-bucketti"
+  name     = "sisaelin-bucketti666"
   location = "US"
 }
 
 # Zipattu koodi #1 ämpäriin
-resource "google_storage_bucket_object" "zip-1" {
+resource "google_storage_bucket_object" "zip_1" {
   provider  = google
   name      = "hae-kaikki-tuotteet"
   bucket    = google_storage_bucket.bucket.name
-  source    = "../functions/hae-kaikki-tuotteet.zip"
+  source    = "../functions/get_all_items.zip"
 }
 
 # Luo funktio zipissä olevasta koodi #1 stä
-resource "google_cloudfunctions_function" "func-1" {
+resource "google_cloudfunctions_function" "func_1" {
   provider    = google
   name        = "hae-kaikki-tuotteet"
   description = "Hakee kaikki tuotteet tietokannasta"
@@ -63,29 +63,29 @@ resource "google_cloudfunctions_function" "func-1" {
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
-  source_archive_object = google_storage_bucket_object.zip-1.name
+  source_archive_object = google_storage_bucket_object.zip_1.name
   trigger_http          = true
   entry_point           = "get_all_items"
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker" {
+resource "google_cloudfunctions_function_iam_member" "invoker_1" {
   provider       = google
-  cloud_function = google_cloudfunctions_function.func-1.name
+  cloud_function = google_cloudfunctions_function.func_1.name
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 # Zipattu koodi #2 ämpäriin
-resource "google_storage_bucket_object" "zip-2" {
+resource "google_storage_bucket_object" "zip_2" {
   provider  = google
   name      = "lisaa-tuote"
   bucket    = google_storage_bucket.bucket.name
-  source    = "../functions/lisaa-tuote.zip"
+  source    = "../functions/push_to_cart.zip"
 }
 
 # Luo funktio zipissä olevasta koodi #2 stä
-resource "google_cloudfunctions_function" "func-2" {
+resource "google_cloudfunctions_function" "func_2" {
   provider    = google
   name        = "lisaa-tuote"
   description = "Hakee kaikki tuotteet tietokannasta"
@@ -93,29 +93,29 @@ resource "google_cloudfunctions_function" "func-2" {
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
-  source_archive_object = google_storage_bucket_object.zip-2.name
+  source_archive_object = google_storage_bucket_object.zip_2.name
   trigger_http          = true
   entry_point           = "insert_to_cart"
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker" {
+resource "google_cloudfunctions_function_iam_member" "invoker_2" {
   provider       = google
-  cloud_function = google_cloudfunctions_function.func-2.name
+  cloud_function = google_cloudfunctions_function.func_2.name
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 # Zipattu koodi #3 ämpäriin
-resource "google_storage_bucket_object" "zip-3" {
+resource "google_storage_bucket_object" "zip_3" {
   provider  = google
   name      = "hae-kaikki-tuotteet"
   bucket    = google_storage_bucket.bucket.name
-  source    = "../functions/ostoskori.zip"
+  source    = "../functions/get_cart.zip"
 }
 
 # Luo funktio zipissä olevasta koodi #3 stä
-resource "google_cloudfunctions_function" "func-3" {
+resource "google_cloudfunctions_function" "func_3" {
   provider    = google
   name        = "ostoskori"
   description = "Hakee kaikki tuotteet tietokannasta"
@@ -123,29 +123,29 @@ resource "google_cloudfunctions_function" "func-3" {
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
-  source_archive_object = google_storage_bucket_object.zip-3.name
+  source_archive_object = google_storage_bucket_object.zip_3.name
   trigger_http          = true
   entry_point           = "get_cart"
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker" {
+resource "google_cloudfunctions_function_iam_member" "invoker_3" {
   provider       = google
-  cloud_function = google_cloudfunctions_function.func-3.name
+  cloud_function = google_cloudfunctions_function.func_3.name
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 # Zipattu koodi #4 ämpäriin
-resource "google_storage_bucket_object" "zip-4" {
+resource "google_storage_bucket_object" "zip_4" {
   provider  = google
   name      = "hae-yksi-elin"
   bucket    = google_storage_bucket.bucket.name
-  source    = "../functions/hae-yksi-elin.zip"
+  source    = "../functions/get_one_item.zip"
 }
 
 # Luo funktio zipissä olevasta koodi #4 stä
-resource "google_cloudfunctions_function" "func-4" {
+resource "google_cloudfunctions_function" "func_4" {
   provider    = google
   name        = "hae-yksi-elin"
   description = "Hakee kaikki tuotteet tietokannasta"
@@ -153,15 +153,15 @@ resource "google_cloudfunctions_function" "func-4" {
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
-  source_archive_object = google_storage_bucket_object.zip-4.name
+  source_archive_object = google_storage_bucket_object.zip_4.name
   trigger_http          = true
   entry_point           = "get_single_item"
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker" {
+resource "google_cloudfunctions_function_iam_member" "invoker_4" {
   provider       = google
-  cloud_function = google_cloudfunctions_function.func-4.name
+  cloud_function = google_cloudfunctions_function.func_4.name
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }

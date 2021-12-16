@@ -29,6 +29,9 @@ gcloud services enable servicemanagement.googleapis.com --project=$GOOGLE_CLOUD_
 echo "Enabling the Service Control for project $GOOGLE_CLOUD_PROJECT..."
 gcloud services enable servicecontrol.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
 
+echo "Enabling the Cloud Sourse Repositories for project $GOOGLE_CLOUD_PROJECT..."
+gcloud services enable sourcerepo.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
+
 # Uncomment if you are deploying a Cloud SQL database
 #echo "Enabling the SQL Admin API for project $GOOGLE_CLOUD_PROJECT..."
 #gcloud services enable sqladmin.googleapis.com --project=$GOOGLE_CLOUD_PROJECT
