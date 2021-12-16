@@ -42,7 +42,7 @@ resource "google_storage_bucket_access_control" "public_rule" {
 # Ämpäri jossa koodit funktioille
 resource "google_storage_bucket" "bucket" {
   provider = google
-  name     = "sisaelin-bucketti"
+  name     = "sisaelin-bucket"
   location = "US"
 }
 
@@ -138,28 +138,28 @@ resource "google_cloudfunctions_function" "func_4" {
 resource "google_cloudfunctions_function_iam_member" "invoker_1" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_1.name
-  role   = "roles/cloudfunctions.invoke"
+  role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 resource "google_cloudfunctions_function_iam_member" "invoker_2" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_2.name
-  role   = "roles/cloudfunctions.invoke"
+  role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 resource "google_cloudfunctions_function_iam_member" "invoker_3" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_3.name
-  role   = "roles/cloudfunctions.invoke"
+  role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
 resource "google_cloudfunctions_function_iam_member" "invoker_4" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_4.name
-  role   = "roles/cloudfunctions.invoke"
+  role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }
 
