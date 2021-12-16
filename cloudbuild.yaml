@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  # entrypoint: 'bash'
+  entrypoint: 'bash'
   args:
   - gcloud
   - functions
@@ -10,17 +10,18 @@ steps:
   - --allow-unauthenticated
   - --entry-point=get_all_items
   - --memory=256MB
-  - --source=./source/functions/get_all_items
+  - # --source=./source/functions/get_all_items
+  - --source=https://github.com/VilleKoivisto/verkkokauppaprojekti-team-1.git/source/functions/get_all_items/
   - --trigger-http
   - --runtime=python39
-#   secretEnv: ['database_host', 'database_name', 'database_pw', 'database_user']
-# availableSecrets:
-#   secretManager:
-#   - versionName: projects/week-10-fall-1/secrets/database_host/latest
-#     env: 'database_host'
-#   - versionName: projects/week-10-fall-1/secrets/database_name/latest
-#     env: 'database_name'
-#   - versionName: projects/week-10-fall-1/secrets/database_pw/latest
-#     env: 'database_pw'
-#   - versionName: projects/week-10-fall-1/secrets/database_user/latest
-#     env: 'database_user'
+  secretEnv: ['database_host', 'database_name', 'database_pw', 'database_user']
+availableSecrets:
+  secretManager:
+  - versionName: projects/week-10-fall-1/secrets/database_host/latest
+    env: 'database_host'
+  - versionName: projects/week-10-fall-1/secrets/database_name/latest
+    env: 'database_name'
+  - versionName: projects/week-10-fall-1/secrets/database_pw/latest
+    env: 'database_pw'
+  - versionName: projects/week-10-fall-1/secrets/database_user/latest
+    env: 'database_user'
