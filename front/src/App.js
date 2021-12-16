@@ -1,4 +1,6 @@
 import React from 'react'
+import './App.css'
+
 const App = () => (
   <div>
     <Main_page />
@@ -11,37 +13,25 @@ const Main_page = () => {
     <div>
       <div id="mainWrapper">
   <header> 
-    <div id="logo"> <img src="logoImage.png" alt="sample logo" />  
-       Company Logo text  
-      LOGO </div>
-    <div id="headerLinks"><a href="#" title="Login/Register">Login/Register</a><a href="#" title="Cart">Cart</a></div>
+    <div id="headerLinks"><a href="#" title="Login/Register">Kirjaudu/Rekisteröidy</a><a href="#" title="Cart">Ostoskori</a></div>
   </header>
   <section id="offer"> 
     <h2>JOPA 50% ALENNUSTA</h2>
-    <p>ALKOHOLIHARRASTAJAN MAKSA -50%</p>
+    <p>KAIKKI ALKOHOLISTIN TUOTTEET NYT -50%! Kampanja voimassa 30.12 asti!</p>
   </section>
   <div id="content">
     <section class="sidebar"> 
       <input type="text"  id="search" value="search" />
       <div id="menubar">
         <nav class="menu">
-          <h2>Sisäelimet </h2>
+          <h2>Hannibalin Valinta </h2>
           <hr></hr>
           <ul>
-            <li><a href="#" title="Link">Link 1</a></li>
-            <li><a href="#" title="Link">Link 2</a></li>
-            <li><a href="#" title="Link">Link 3</a></li>
-            <li class="notimp"><a href="#"  title="Link">Link 4</a></li>
-          </ul>
-        </nav>
-        <nav class="menu">
-          <h2>Oheistuotteet </h2>
-          <hr></hr>
-          <ul>
-            <li><a href="#" title="Link">Fava Beans</a></li>
-            <li><a href="#" title="Link">Chianti</a></li>
-            <li><a href="#" title="Link"></a></li>
-            <li class="notimp"><a href="#" title="Link">Link 4</a></li>
+          <li><a href="#" title="Link">Sisäelimet</a></li>
+            <li><a href="#" title="Link">Ruumiinosat</a></li>
+            <li><a href="#" title="Link">Oheistuotteet - viinit, kastikkeet jne</a></li>
+            <li><a href="#" title="Link">Alelaari - alkoholistit, tupakoitsijat</a></li>
+            <li><a href="#" title="Link">Premium tuotteet - urheilijat jne</a></li>
           </ul>
         </nav>
       </div>
@@ -49,64 +39,95 @@ const Main_page = () => {
     <section class="mainContent">
       <div class="productRow">
         <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
+          <div><img alt="sample" src={require('./images/brain.jpg')} /></div> 
+          <p class="price">349,99 €</p>
           <p class="productContent">Aivot</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
+          <input type="button" name="button" value="Buy" class="buyButton" />                
         </article>
+        <div class="productinfo"><p>Hyvin koulutetut ja mehukkaat </p></div>
+
         <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
+          <div><img alt="sample" src={require('./images/liver.jpg')} /></div>
+          <p class="price">276,48 €</p>
           <p class="productContent">Maksa</p>
           <input type="button" name="button" value="Buy" class="buyButton" />
         </article>
+        <div class="productinfo"><p>Sopii hyvin punaviinin kanssa </p></div>
+
         <article class="productInfo"> 
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
+          <div><img alt="sample" src={require('./images/heart.jpg')} /></div>
+          <p class="price">167 €</p>
+          <p class="productContent">Sydän</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Vahingoittumaton, pumppaa erinomaisesti. </p></div>
+        </div>
+
+<div class="productRow">
+        <article class="productInfo"> 
+          <div><img alt="sample" src={require('./images/lungs_h.jpg')} /></div>
+          <p class="price">148 €</p>
           <p class="productContent">Keuhkot</p>
           <input type="button" name="button" value="Buy" class="buyButton" />
         </article>
+        <div class="productinfo"><p>Henkeäsalpaava makuelämys! </p></div>
+
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/lungs_b.jpg')} /></div>
+          <p class="price">23 €</p>
+          <p class="productContent">Tupakoijan keuhkot</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Paljon rapsakammat kuin terveet keuhkot </p></div>
+
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/fingers.jpg')} /></div>
+          <p class="price">5 €/kpl</p>
+          <p class="productContent">Sormia</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Suosittelemme mukaan chili-dippiä. </p></div>
+        </div>
+
+<div class="productRow">
+        </div>
+        <div class="productRow">
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/ribs.jpg')} /></div>
+          <p class="price">$50</p>
+          <p class="productContent">Ribsit</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Erittäin maukkaat. </p></div>
+        
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/leg.jpg')} /></div>
+          <p class="price">$50</p>
+          <p class="productContent">Jalka</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Tällä on kyykätty paljon. Yhtään jalkapäivää ei ole skipattu. </p></div>
+
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/arm.jpg')} /></div>
+          <p class="price">$50</p>
+          <p class="productContent">Käsi</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />          
+        </article>
+        <div class="productinfo"><p>Kaikki sormet tallella </p></div>
       </div>
-      <div class="productRow"> 
-        <article class="productInfo"> 
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Sormi</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
-        <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Content holder</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
-        <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Content holder</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
+
+    </section>
+    <section id="offer">
+      <div class="alaboksi">
+        <p>Suositut tuotteet</p>
+        <img alt="sample" src={require('./images/liver.jpg')} />
+        <img alt="brain" src={require('./images/brain.jpg')} />
+        <img alt="chianti" src={require('./images/chianti.jpg')} />
+
       </div>
-      <div class="productRow">
-        <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Content holder</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
-        <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Content holder</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
-        <article class="productInfo">
-          <div><img alt="sample" src="eCommerceAssets/images/200x200.png" /></div>
-          <p class="price">$50</p>
-          <p class="productContent">Content holder</p>
-          <input type="button" name="button" value="Buy" class="buyButton" />
-        </article>
-      </div>
+
+        
     </section>
   </div>
   <footer> 
@@ -117,15 +138,14 @@ const Main_page = () => {
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius sem neque. Integer ornare.</p>
     </div>
     <div class="footerlinks">
-      <p><a href="#" title="Link">Link 1 </a></p>
-      <p><a href="#" title="Link">Link 2</a></p>
-      <p><a href="#" title="Link">Link 3</a></p>
+      <p><a href="#" title="Link">Yhteydenotto</a>
+      <a href="#" title="Link">Hae meille töihin!</a>
+      <a href="#" title="Link">FAQ</a></p>
     </div>
   </footer>
 </div>
-    </div>
+    </div>   
   )
 }
-
 
 export default App
