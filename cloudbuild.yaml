@@ -5,7 +5,7 @@ steps:
       - beta
       - functions
       - deploy
-      - get-all-items
+      - hae-kaikki-tuotteet
       - '--region=us-central1'
       - '--allow-unauthenticated'
       - '--entry-point=get_all_items'
@@ -27,7 +27,7 @@ steps:
       - alpha
       - functions
       - add-iam-policy-binding
-      - get-all-items
+      - hae-kaikki-tuotteet
       - --region=us-central1
       - --member=allUsers
       - --role=roles/cloudfunctions.invoker
@@ -37,7 +37,7 @@ steps:
       - beta
       - functions
       - deploy
-      - get-one-item
+      - hae-yksi-elin
       - '--region=us-central1'
       - '--allow-unauthenticated'
       - '--entry-point=get_single_item'
@@ -59,7 +59,7 @@ steps:
       - alpha
       - functions
       - add-iam-policy-binding
-      - get-one-item
+      - hae-yksi-elin
       - --region=us-central1
       - --member=allUsers
       - --role=roles/cloudfunctions.invoker
@@ -69,7 +69,7 @@ steps:
       - beta
       - functions
       - deploy
-      - get-cart
+      - ostoskori
       - '--region=us-central1'
       - '--allow-unauthenticated'
       - '--entry-point=get_cart'
@@ -91,7 +91,7 @@ steps:
       - alpha
       - functions
       - add-iam-policy-binding
-      - get-cart
+      - ostoskori
       - --region=us-central1
       - --member=allUsers
       - --role=roles/cloudfunctions.invoker
@@ -101,7 +101,7 @@ steps:
       - beta
       - functions
       - deploy
-      - push-to-cart
+      - lisaa-tuote
       - '--region=us-central1'
       - '--allow-unauthenticated'
       - '--entry-point=insert_to_cart'
@@ -123,7 +123,7 @@ steps:
       - alpha
       - functions
       - add-iam-policy-binding
-      - push-to-cart
+      - lisaa-tuote
       - --region=us-central1
       - --member=allUsers
       - --role=roles/cloudfunctions.invoker
