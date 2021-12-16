@@ -1,27 +1,99 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
-  args:
-  - gcloud
-  - functions
-  - deploy
-  - testi-funktio
-  - --region=us-central1
-  - --allow-unauthenticated
-  - --entry-point=get_all_items
-  - --memory=256MB
-  - # --source=./source/functions/get_all_items
-  - --source=https://github.com/VilleKoivisto/verkkokauppaprojekti-team-1.git/source/functions/get_all_items/
-  - --trigger-http
-  - --runtime=python39
-  secretEnv: ['database_host', 'database_name', 'database_pw', 'database_user']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - get-all-items
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_all_items'
+      - '--memory=256MB'
+      - '--source=source/functions/get_all_items/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - get-one-item
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_single_item'
+      - '--memory=256MB'
+      - '--source=source/functions/get_one_item/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - get-cart
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_cart'
+      - '--memory=256MB'
+      - '--source=source/functions/get_cart/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - push_to_cart
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=insert_to_cart'
+      - '--memory=256MB'
+      - '--source=source/functions/push_to_cart/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
 availableSecrets:
   secretManager:
-  - versionName: projects/week-10-fall-1/secrets/database_host/latest
-    env: 'database_host'
-  - versionName: projects/week-10-fall-1/secrets/database_name/latest
-    env: 'database_name'
-  - versionName: projects/week-10-fall-1/secrets/database_pw/latest
-    env: 'database_pw'
-  - versionName: projects/week-10-fall-1/secrets/database_user/latest
-    env: 'database_user'
+    - versionName: projects/344690940931/secrets/database_host/versions/1
+      env: database_host
+    - versionName: projects/week-10-fall-1/secrets/database_name/versions/1
+      env: database_name
+    - versionName: projects/week-10-fall-1/secrets/database_pw/versions/2
+      env: database_pw
+    - versionName: projects/week-10-fall-1/secrets/database_user/versions/1
+      env: database_user
