@@ -1,5 +1,5 @@
 variable "project" {
-  default = "testittt"
+  default = "	week-10-fall-1"
 }
 
 variable "region" {
@@ -12,7 +12,7 @@ variable "zone" {
 variable "repository_name" {
   description = "Name of the Google Cloud Source Repository to create."
   type        = string
-  default     = "sample-docker-app"
+  default     = "hannibal-repo"
 }
 
 #variable "credentials_file" {
