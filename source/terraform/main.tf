@@ -135,31 +135,31 @@ resource "google_cloudfunctions_function" "func_4" {
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "admin-1" {
+resource "google_cloudfunctions_function_iam_member" "invoker_1" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_1.name
-  role   = "roles/cloudfunctions.admin"
+  role   = "roles/cloudfunctions.invoke"
   member = "allUsers"
 }
 
-resource "google_cloudfunctions_function_iam_member" "admin-2" {
+resource "google_cloudfunctions_function_iam_member" "invoker_2" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_2.name
-  role   = "roles/cloudfunctions.admin"
+  role   = "roles/cloudfunctions.invoke"
   member = "allUsers"
 }
 
-resource "google_cloudfunctions_function_iam_member" "admin-3" {
+resource "google_cloudfunctions_function_iam_member" "invoker_3" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_3.name
-  role   = "roles/cloudfunctions.admin"
+  role   = "roles/cloudfunctions.invoke"
   member = "allUsers"
 }
 
-resource "google_cloudfunctions_function_iam_member" "admin-4" {
+resource "google_cloudfunctions_function_iam_member" "invoker_4" {
   provider       = google
   cloud_function = google_cloudfunctions_function.func_4.name
-  role   = "roles/cloudfunctions.admin"
+  role   = "roles/cloudfunctions.invoke"
   member = "allUsers"
 }
 
@@ -167,16 +167,16 @@ resource "google_cloudfunctions_function_iam_member" "admin-4" {
 ### Luodaan API, gateway ja config
 
 # Luodaan API 
-resource "google_api_gateway_api" "hannibal_api" {
+resource "google_api_gateway_api" "hannibal_gw" {
   provider = google-beta
-  api_id = "hannibal-api"
+  api_id = "hannibal-gw"
 }
 
 # Luodaan config
-resource "google_api_gateway_api_config" "hannibal_config" {
+resource "google_api_gateway_api_config" "hannibal_gw" {
   provider = google-beta
-  api = google_api_gateway_api.hannibal_api.api_id
-  api_config_id = "hannibal-config"
+  api = google_api_gateway_api.hannibal_gw.api_id
+  api_config_id = "config"
 
   openapi_documents {
     document {
@@ -190,8 +190,8 @@ resource "google_api_gateway_api_config" "hannibal_config" {
 }
 
 # Luodaan gateway
-resource "google_api_gateway_gateway" "hannibal_gateway" {
+resource "google_api_gateway_gateway" "hannibal_gw" {
   provider = google-beta
-  api_config = google_api_gateway_api_config.hannibal_config.api_config_id
-  gateway_id = "hannibal-gateway"
+  api_config = google_api_gateway_api_config.hannibal_gw.id
+  gateway_id = "hannibal-gw"
 }
