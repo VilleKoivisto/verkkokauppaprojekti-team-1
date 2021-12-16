@@ -1,4 +1,5 @@
 # coding=utf-8
+# juukeli, nytkö jo toimii?!?
 """
 Hakee kaikki tuotteet tietokannasta:
 http-GET -> funktio -> json

@@ -7,3 +7,4 @@ Jokainen funktio omassa kansiossaan, jossa Terraformia varten
 ## Funktiot
 - `get_all_items` hakee kaikki tuotteet tietokannasta
 - `get_cart` hakee tietyn ostoskorin tuotteet
+- `get_one_item` juukeli

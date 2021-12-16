@@ -1,0 +1,139 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - hae-kaikki-tuotteet
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_all_items'
+      - '--memory=256MB'
+      - '--source=source/functions/get_all_items/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - hae-kaikki-tuotteet
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - hae-yksi-elin
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_single_item'
+      - '--memory=256MB'
+      - '--source=source/functions/get_one_item/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - hae-yksi-elin
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - ostoskori
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=get_cart'
+      - '--memory=256MB'
+      - '--source=source/functions/get_cart/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - ostoskori
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - lisaa-tuote
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=insert_to_cart'
+      - '--memory=256MB'
+      - '--source=source/functions/push_to_cart/'
+      - '--trigger-http'
+      - '--runtime=python39'
+      - >-
+        --set-secrets=database_host=database_host:latest,database_name=database_name:latest,database_pw=database_pw:latest,database_user=database_user:latest
+    entrypoint: bash
+    secretEnv:
+      - database_host
+      - database_name
+      - database_pw
+      - database_user
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - alpha
+      - functions
+      - add-iam-policy-binding
+      - lisaa-tuote
+      - --region=us-central1
+      - --member=allUsers
+      - --role=roles/cloudfunctions.invoker
+availableSecrets:
+  secretManager:
+    - versionName: projects/344690940931/secrets/database_host/versions/1
+      env: database_host
+    - versionName: projects/week-10-fall-1/secrets/database_name/versions/1
+      env: database_name
+    - versionName: projects/week-10-fall-1/secrets/database_pw/versions/2
+      env: database_pw
+    - versionName: projects/week-10-fall-1/secrets/database_user/versions/1
+      env: database_user
