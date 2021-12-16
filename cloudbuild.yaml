@@ -1,5 +1,6 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
   args:
   - gcloud
   - functions
@@ -12,6 +13,7 @@ steps:
   - --source=./source/functions/get_all_items
   - --trigger-http
   - --runtime=python39
+  secretEnv: ['database_host', 'database_name', 'database_pw', 'database_user']
 availableSecrets:
   secretManager:
   - versionName: projects/week-10-fall-1/secrets/database_host/latest
