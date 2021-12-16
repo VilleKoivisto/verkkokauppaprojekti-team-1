@@ -16,7 +16,7 @@ const Main_page = () => {
     <div id="headerLinks"><a href="#" title="Login/Register">Kirjaudu/Rekisteröidy</a><a href="#" title="Cart">Ostoskori</a></div>
   </header>
   <section id="offer"> 
-    <h2>JOPA 50% ALENNUSTA</h2>
+    <h2>Hannibalin Valinta - 100% kotimaista luomulihaa jalostuneeseen makuun</h2>
     <p>KAIKKI ALKOHOLISTIN TUOTTEET NYT -50%! Kampanja voimassa 30.12 asti!</p>
   </section>
   <div id="content">
@@ -44,7 +44,7 @@ const Main_page = () => {
           <p class="productContent">Aivot</p>
           <input type="button" name="button" value="Buy" class="buyButton" />                
         </article>
-        <div class="productinfo"><p>Hyvin koulutetut ja mehukkaat </p></div>
+        <div class="productinfo"><p>Hyvin koulutetut ja mehukkaat. Gluteeniton. </p></div>
 
         <article class="productInfo">
           <div><img alt="sample" src={require('./images/liver.jpg')} /></div>
@@ -60,7 +60,7 @@ const Main_page = () => {
           <p class="productContent">Sydän</p>
           <input type="button" name="button" value="Buy" class="buyButton" />
         </article>
-        <div class="productinfo"><p>Vahingoittumaton, pumppaa erinomaisesti. </p></div>
+        <div class="productinfo"><p>Vahingoittumaton, pumppaa erinomaisesti. Vähälaktoosinen. </p></div>
         </div>
 
 <div class="productRow">
@@ -78,7 +78,7 @@ const Main_page = () => {
           <p class="productContent">Tupakoijan keuhkot</p>
           <input type="button" name="button" value="Buy" class="buyButton" />
         </article>
-        <div class="productinfo"><p>Paljon rapsakammat kuin terveet keuhkot </p></div>
+        <div class="productinfo"><p>30 vuoden savustus. Paljon rapsakammat kuin terveet keuhkot </p></div>
 
         <article class="productInfo">
           <div><img alt="sample" src={require('./images/fingers.jpg')} /></div>
@@ -89,8 +89,6 @@ const Main_page = () => {
         <div class="productinfo"><p>Suosittelemme mukaan chili-dippiä. </p></div>
         </div>
 
-<div class="productRow">
-        </div>
         <div class="productRow">
         <article class="productInfo">
           <div><img alt="sample" src={require('./images/ribs.jpg')} /></div>
@@ -117,18 +115,33 @@ const Main_page = () => {
         <div class="productinfo"><p>Kaikki sormet tallella </p></div>
       </div>
 
-    </section>
-    <section id="offer">
-      <div class="alaboksi">
-        <p>Suositut tuotteet</p>
-        <img alt="sample" src={require('./images/liver.jpg')} />
-        <img alt="brain" src={require('./images/brain.jpg')} />
-        <img alt="chianti" src={require('./images/chianti.jpg')} />
+        <div class="productRow">
+        <article class="productInfo">
+          <div><img alt="sample" src={require('./images/tongue.jpg')} /></div>
+          <p class="price">$50</p>
+          <p class="productContent">Kieli</p>
+          <input type="button" name="button" value="Buy" class="buyButton" />
+        </article>
+        <div class="productinfo"><p>Vie kielen mennessään. </p></div>
+        
+        <article class="productInfo">
+        </article>
+        
+
+        <article class="productInfo">              
+        </article>
 
       </div>
-
-        
+      </section>
+    <section id="offer">
+      <div class="alaboksi">
+        <p>Ostettu usein yhdessä</p>
+        <div>
+        <img alt="sample" src={require('./images/liver.jpg')} />       
+        <img alt="chianti" src={require('./images/chianti.jpg')} /></div>
+      </div>        
     </section>
+
   </div>
   <footer> 
     <div>

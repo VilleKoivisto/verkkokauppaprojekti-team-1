@@ -132,6 +132,7 @@ header {
 #content .mainContent .productRow {
 	overflow: auto;
 	color: rgba(146,146,146,1.00);
+	padding-top: 55px;
 }
 /* Each product Information in the catalog */
 .mainContent .productRow .productInfo {
@@ -144,7 +145,8 @@ header {
 	color: rgba(146,146,146,1.00);
 	font-size: 22px;
 	position: relative;
-	top: -20px;
+	top: -10px;
+	padding-bottom: 10px;
 }
 /* Content holder for products in catalog*/
 .productRow .productInfo .productContent {
