@@ -89,4 +89,5 @@ variable "db_password" {
   description = "The password of the Cloud SQL database user."
   type        = string
   default     = "testpassword" 
+}
 
