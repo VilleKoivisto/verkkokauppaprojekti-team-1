@@ -1,5 +1,5 @@
 variable "project" {
-  default = "	week-10-fall-1"
+  default = "week-10-fall-1"
 }
 
 variable "region" {
