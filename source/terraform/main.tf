@@ -42,7 +42,7 @@ resource "google_storage_bucket_access_control" "public_rule" {
 # Ämpäri jossa koodit funktioille
 resource "google_storage_bucket" "bucket" {
   provider = google
-  name     = "sisaelin-bucketti666"
+  name     = "sisaelin-testittt"
   location = "US"
 }
 
@@ -68,14 +68,6 @@ resource "google_cloudfunctions_function" "func_1" {
   entry_point           = "get_all_items"
 }
 
-# tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker_1" {
-  provider       = google
-  cloud_function = google_cloudfunctions_function.func_1.name
-  role   = "roles/cloudfunctions.invoker"
-  member = "allUsers"
-}
-
 # Zipattu koodi #2 ämpäriin
 resource "google_storage_bucket_object" "zip_2" {
   provider  = google
@@ -98,14 +90,6 @@ resource "google_cloudfunctions_function" "func_2" {
   entry_point           = "insert_to_cart"
 }
 
-# tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker_2" {
-  provider       = google
-  cloud_function = google_cloudfunctions_function.func_2.name
-  role   = "roles/cloudfunctions.invoker"
-  member = "allUsers"
-}
-
 # Zipattu koodi #3 ämpäriin
 resource "google_storage_bucket_object" "zip_3" {
   provider  = google
@@ -126,14 +110,6 @@ resource "google_cloudfunctions_function" "func_3" {
   source_archive_object = google_storage_bucket_object.zip_3.name
   trigger_http          = true
   entry_point           = "get_cart"
-}
-
-# tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker_3" {
-  provider       = google
-  cloud_function = google_cloudfunctions_function.func_3.name
-  role   = "roles/cloudfunctions.invoker"
-  member = "allUsers"
 }
 
 # Zipattu koodi #4 ämpäriin
@@ -159,9 +135,9 @@ resource "google_cloudfunctions_function" "func_4" {
 }
 
 # tää pitää olla jotta on julkisesti saatavilla
-resource "google_cloudfunctions_function_iam_member" "invoker_4" {
+resource "google_cloudfunctions_function_iam_member" "invoker" {
   provider       = google
-  cloud_function = google_cloudfunctions_function.func_4.name
+  cloud_function = google_cloudfunctions_function.func_1.name
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"
 }

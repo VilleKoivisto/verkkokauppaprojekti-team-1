@@ -1,5 +1,5 @@
 variable "project" {
-  default = "testitt"
+  default = "testittt"
 }
 
 variable "region" {

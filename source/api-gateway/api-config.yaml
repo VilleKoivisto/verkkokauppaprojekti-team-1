@@ -14,7 +14,7 @@ paths:
       summary: Hakee kaikki tuotteet
       operationId: hae-kaikki
       x-google-backend:
-        address: https://us-central1-testitt.cloudfunctions.net/hae-kaikki-tuotteet 
+        address: https://us-central1-testittt.cloudfunctions.net/hae-kaikki-tuotteet 
       responses:
         '200':
           description: Hakee verkkokaupan kaikki tuotteet
@@ -25,7 +25,7 @@ paths:
       summary: Hakee yksittäisen tuotteen
       operationId: hae
       x-google-backend:
-        address: https://us-central1-testitt.cloudfunctions.net/hae-yksi-elin
+        address: https://us-central1-testittt.cloudfunctions.net/hae-yksi-elin
       responses:
         '200':
           description: Hakee yksittäisen tuotteen verkkokaupasta
@@ -36,7 +36,7 @@ paths:
       summary: Lisää valitun tuotteen koriin
       operationId: lisaa-koriin
       x-google-backend:
-        address: https://us-central1-testitt.cloudfunctions.net/lisaa-tuote
+        address: https://us-central1-testittt.cloudfunctions.net/lisaa-tuote
       responses:
         '200':
           description: Lisää tuotteen koriin
@@ -46,7 +46,7 @@ paths:
       summary: Hakee ostoskorin sisällön
       operationId: ostoskori
       x-google-backend:
-        address: https://us-central1-testitt.cloudfunctions.net/ostoskori
+        address: https://us-central1-testittt.cloudfunctions.net/ostoskori
       responses:
         '200':
           description: Palauttaa ostoskorin sisällön
