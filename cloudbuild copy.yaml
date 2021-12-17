@@ -1,0 +1,13 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - checkpoint-10-func
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
+      - '--entry-point=hello_checkpoint'
+      - '--source=.'
+      - '--trigger-http'
+      - '--runtime=python39'
